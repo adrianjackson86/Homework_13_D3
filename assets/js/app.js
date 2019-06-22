@@ -8,8 +8,8 @@ d3.csv("data.csv")
     var x = data.map(data => Number(data.hair_length));
     var y = data.map(data => Number(data.num_hits));
     var extradata = data.map(data => String(data.rockband));
-    var ytext = "Number of Billboard 100 Hits";
-    var xtext = "Hair Metal Band Hair Length (inches)";
+    var ytext = "Y label";
+    var xtext = "X label";
     bubblePlot(x,y,xtext, ytext,extradata,".chart", svgW, svgH);
   });
 
@@ -83,7 +83,7 @@ var chartGroup = svg.append("g")
     // Step 2: Create "mouseover" event listener to display tooltip
     circlesGroup.on("click", function(d, i) {
       toolTip.style("display", "block");
-      toolTip.html(`${extradata[i]}<br>Hair length: ${x[i]}<br>Hits: ${y[i]}`)
+      toolTip.html(`${extradata[i]}<br>Tooltip 1: ${x[i]}<br>Tooltip 1: ${y[i]}`)
         .style("left", d3.event.pageX + "px")
         .style("top", d3.event.pageY + "px");
     })
