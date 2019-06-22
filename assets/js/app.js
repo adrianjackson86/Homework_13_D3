@@ -1,13 +1,13 @@
 // @TODO: YOUR CODE HERE!
-d3.csv("hairData.csv")
-  .then(function(hairData) {
+d3.csv("data.csv")
+  .then(function(data) {
     var svgW = 960;
     var svgH = 500;
     // Step 1: Parse Data/Cast as numbers
     // ==============================
-    var x = hairData.map(data => Number(data.hair_length));
-    var y = hairData.map(data => Number(data.num_hits));
-    var extradata = hairData.map(data => String(data.rockband));
+    var x = data.map(data => Number(data.hair_length));
+    var y = data.map(data => Number(data.num_hits));
+    var extradata = data.map(data => String(data.rockband));
     var ytext = "Number of Billboard 100 Hits";
     var xtext = "Hair Metal Band Hair Length (inches)";
     bubblePlot(x,y,xtext, ytext,extradata,".chart", svgW, svgH);
@@ -22,7 +22,7 @@ function bubblePlot(x,y,xtext,ytext,extradata,thetag, svgWidth, svgHeight){
     bottom: 60,
     left: 100
   };
-  var width = svgWidth - margin.left - margin.right;
+var width = svgWidth - margin.left - margin.right;
 var height = svgHeight - margin.top - margin.bottom;
 
 // Create an SVG wrapper, append an SVG group that will hold our chart, and shift the latter by left and top margins.
