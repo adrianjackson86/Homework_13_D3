@@ -5,9 +5,9 @@ d3.csv("data.csv")
     var svgH = 500;
     // Step 1: Parse Data/Cast as numbers
     // ==============================
-    var x = data.map(data => Number(data.hair_length));
-    var y = data.map(data => Number(data.num_hits));
-    var extradata = data.map(data => String(data.rockband));
+    var x = data.map(data => Number(data.healthcare));
+    var y = data.map(data => Number(data.obesity));
+    var extradata = data.map(data => String(data.abbr));
     var ytext = "Y label";
     var xtext = "X label";
     bubblePlot(x,y,xtext, ytext,extradata,".chart", svgW, svgH);
