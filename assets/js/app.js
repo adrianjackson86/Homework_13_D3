@@ -38,7 +38,7 @@ function makeResponsive() {
     d3.select(".chart").append("div").attr("class", "tooltip").style("opacity", 0);
 
     // Retrieve data from the CSV file and execute everything below
-    d3.csv("data/data.csv", function(err, six_five_data) {
+    d3.csv("assets/data/data.csv", function(err, six_five_data) {
     if (err) throw err;
     
     six_five_data.forEach(function(data) {
@@ -98,8 +98,7 @@ function makeResponsive() {
     yLinearScale.domain([yMin, yMax]);
 
     // Initialize tooltip
-    var toolTip = d3
-        .tip()
+    var toolTip = d3.tip()
         .attr("class", "d3-tip")
         // Define position
         .offset([0, 0])
@@ -137,11 +136,9 @@ function makeResponsive() {
     chart.call(toolTip);
     
     // Create circle
-    chart
-        .selectAll("circle")
+    chart.selectAll("circle")
         .data(six_five_data)
-        .enter()
-        .append("circle")
+        .enter().append("circle")
         .attr("cx", function(data, index) {
         return xLinearScale(+data[currentAxisLabelX]);
         })
@@ -156,8 +153,7 @@ function makeResponsive() {
         .on('mouseout', toolTip.hide);
     
     // Create abbrivation of states to show on the circle
-    chart
-        .selectAll("text")
+    chart.selectAll("text")
         .data(six_five_data)
         .enter()
         .append("text")
@@ -177,22 +173,19 @@ function makeResponsive() {
         });
 
     // Append an SVG group for the x-axis, then display the x-axis
-    chart
-        .append("g")
+    chart.append("g")
         .attr("transform", "translate(0," + height + ")")
         // The class name assigned here will be used for transition effects
         .attr("class", "x-axis")
         .call(bottomAxis);
 
     // Append a group for y-axis, then display it
-    chart
-        .append("g")
+    chart.append("g")
         .attr("class", "y-axis")
         .call(leftAxis);
 
     // Append y-axis label
-    chart
-        .append("text")
+    chart.append("text")
         .attr("transform", "rotate(-90)")
         .attr("y", 0 - margin.left + 80)
         .attr("x", 0 - height / 2)
@@ -202,8 +195,7 @@ function makeResponsive() {
         .attr("id", "allTeethRemoved")
         .text("65+ with All Teeth Removed (%)");
 
-    chart
-        .append("text")
+    chart.append("text")
         .attr("transform", "rotate(-90)")
         .attr("y", 0 - margin.left + 55)
         .attr("x", 0 - height / 2)
@@ -213,8 +205,7 @@ function makeResponsive() {
         .attr("id", "skinCancer")
         .text("Had Skin Cancer (%)");
 
-    chart
-        .append("text")
+    chart.append("text")
         .attr("transform", "rotate(-90)")
         .attr("y", 0 - margin.left + 30)
         .attr("x", 0 - height / 2)
@@ -225,8 +216,7 @@ function makeResponsive() {
         .text("Currently Smoking (%)");
 
     // Append x-axis labels
-    chart
-        .append("text")
+    chart.append("text")
         .attr(
         "transform",
         "translate(" + width / 2 + " ," + (height + margin.top + 20) + ")"
@@ -236,8 +226,7 @@ function makeResponsive() {
         .attr("data-axis-name", "bachelorOrHigher")
         .text("Education level: Bachelor or higher (%)");
 
-    chart
-        .append("text")
+    chart.append("text")
         .attr(
         "transform",
         "translate(" + width / 2 + " ," + (height + margin.top + 45) + ")"
@@ -247,8 +236,7 @@ function makeResponsive() {
         .attr("data-axis-name", "white")
         .text("Race: White (%)");
 
-    chart
-        .append("text")
+    chart.append("text")
         .attr(
         "transform",
         "translate(" + width / 2 + " ," + (height + margin.top + 70) + ")"
